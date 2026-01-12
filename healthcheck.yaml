@@ -1,0 +1,21 @@
+---
+apiVersion: kuberhealthy.github.io/v2
+kind: HealthCheck
+metadata:
+  name: kiam
+  namespace: kuberhealthy
+spec:
+  extraAnnotations:
+    iam.amazonaws.com/role: <role-arn>
+  runInterval: 5m
+  timeout: 15m
+  podSpec:
+    spec:
+      containers:
+        - name: kiam
+          image: kuberhealthy/kiam-check:sha-<short-sha>
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: AWS_REGION
+              value: us-west-2
+      restartPolicy: Always
