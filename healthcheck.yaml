@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: kiam
-          image: kuberhealthy/kiam-check:sha-<short-sha>
+          image: ghcr.io/kuberhealthy/kiam-check:v0.1.0
           imagePullPolicy: IfNotPresent
           env:
             - name: AWS_REGION
